@@ -7,8 +7,8 @@ const { BrowserWindow, shell } = require('electron');
 class SpotifyService {
   constructor() {
     // TODO: Замените на ваши реальные значения из Spotify Developer Dashboard
-    this.clientId = 'YOUR_SPOTIFY_CLIENT_ID_HERE';
-    this.clientSecret = 'YOUR_SPOTIFY_CLIENT_SECRET_HERE';
+    this.clientId = 'bab0eedea3c0444981f93e63e5d63009';
+    this.clientSecret = '6536bb9a42e14862843288383308209e';
     // GitHub Pages URL для callback
     this.redirectUri = 'https://fixi2.github.io/spotiplayer/callback.html';
     this.alternativeUris = [

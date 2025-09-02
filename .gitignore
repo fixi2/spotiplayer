@@ -95,3 +95,13 @@ Thumbs.db
 
 # Config files with sensitive data
 config.json
+
+# Spotify API credentials (NEVER commit these!)
+# Add your real credentials to services/SpotifyService.js but keep them out of git
+# Example:
+# this.clientId = 'your_real_client_id_here';
+# this.clientSecret = 'your_real_client_secret_here';
+
+# Backup files with real credentials
+services/SpotifyService.backup.js
+services/SpotifyService.local.js
