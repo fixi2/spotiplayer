@@ -70,9 +70,26 @@
             document.querySelector('.message').textContent = 'Ошибка авторизации: ' + error;
             document.querySelector('.success').textContent = '❌';
         } else if (code) {
+            console.log('🔑 Получен код авторизации:', code);
+            
             // Отправляем код обратно в Electron приложение
-            if (window.electronAPI) {
-                window.electronAPI.spotify.handleAuthCallback(code);
+            if (window.electronAPI && window.electronAPI.spotify) {
+                console.log('📱 Отправляем код в Electron приложение...');
+                window.electronAPI.spotify.handleAuthCallback(code)
+                    .then(result => {
+                        console.log('✅ Код успешно обработан:', result);
+                        document.querySelector('.message').textContent = 'Подключение успешно!';
+                        document.querySelector('.submessage').textContent = 'Можете закрыть это окно';
+                    })
+                    .catch(error => {
+                        console.error('❌ Ошибка обработки кода:', error);
+                        document.querySelector('.message').textContent = 'Ошибка подключения: ' + error.message;
+                        document.querySelector('.success').textContent = '❌';
+                    });
+            } else {
+                console.log('⚠️ Electron API недоступен, показываем код для ручного ввода');
+                document.querySelector('.message').textContent = 'Код авторизации получен!';
+                document.querySelector('.submessage').textContent = 'Код: ' + code;
             }
         }
 
