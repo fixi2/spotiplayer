@@ -1,0 +1,364 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.player-container {
+  position: relative;
+  width: 1000px;
+  height: 320px;
+  overflow: hidden;
+  border-radius: 32px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.player-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(30px);
+  border-radius: 32px;
+}
+
+.player-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  padding: 40px;
+  gap: 40px;
+}
+
+/* Загрузка и ошибки */
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+
+.retry-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.retry-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* Обложка альбома */
+.album-cover {
+  flex-shrink: 0;
+}
+
+.album-cover img {
+  width: 180px;
+  height: 180px;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Информация о треке */
+.track-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Название трека */
+.track-title-container {
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.track-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 64px;
+  color: #ffffff;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: default;
+  transition: transform 0.3s ease;
+}
+
+.track-title:hover {
+  animation: marquee 8s linear infinite;
+}
+
+/* Исполнитель */
+.track-artist-container {
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.track-artist {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 48px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: default;
+  transition: transform 0.3s ease;
+}
+
+.track-artist:hover {
+  animation: marquee 8s linear infinite;
+}
+
+/* Анимация marquee */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-20%); }
+  75% { transform: translateX(-20%); }
+  100% { transform: translateX(0); }
+}
+
+/* Секция прогресса */
+.progress-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.progress-times {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.progress-bar-container {
+  cursor: pointer;
+  padding: 10px 0;
+  transition: transform 0.2s ease;
+}
+
+.progress-bar-container:active {
+  transform: scale(1.02);
+}
+
+.progress-bar {
+  width: 384px;
+  height: 9px;
+  background: rgba(217, 217, 217, 0.6);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: rgba(217, 217, 217, 0.9);
+  border-radius: 16px;
+  transition: width 0.3s ease;
+  position: relative;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 12px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+}
+
+/* Контролы */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+.control-button {
+  width: 80px;
+  height: 80px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: #ffffff;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.control-button:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.control-button:active {
+  transform: scale(0.95);
+}
+
+.control-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+}
+
+.control-button:active::before {
+  width: 100px;
+  height: 100px;
+}
+
+.play-pause {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Статус подключения */
+.connection-status {
+  margin-top: 10px;
+}
+
+.status-indicator {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-indicator.connected {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.status-indicator.disconnected {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+  .player-container {
+    width: 80vw;
+    height: 25.6vw;
+  }
+  
+  .track-title {
+    font-size: 5.2vw;
+  }
+  
+  .track-artist {
+    font-size: 3.9vw;
+  }
+  
+  .progress-times {
+    font-size: 1.9vw;
+  }
+  
+  .progress-bar {
+    width: 30.7vw;
+  }
+  
+  .control-button {
+    width: 6.4vw;
+    height: 6.4vw;
+    font-size: 2.6vw;
+  }
+  
+  .album-cover img {
+    width: 14.4vw;
+    height: 14.4vw;
+  }
+}
+
+@media (max-width: 800px) {
+  .player-card {
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .album-cover img {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .track-title {
+    font-size: 32px;
+  }
+  
+  .track-artist {
+    font-size: 24px;
+  }
+  
+  .progress-bar {
+    width: 280px;
+  }
+}

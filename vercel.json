@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "public/**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/callback",
+      "dest": "/callback.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/callback.html"
+    }
+  ]
+}

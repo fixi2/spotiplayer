@@ -1,0 +1,49 @@
+{
+  "spotify": {
+    "clientId": "your_spotify_client_id_here",
+    "clientSecret": "your_spotify_client_secret_here",
+    "redirectUri": "http://localhost:8888/callback"
+  },
+  
+  "development": {
+    "isDev": true,
+    "logLevel": "debug",
+    "enableLogging": true,
+    "authPort": 8888,
+    "pollingInterval": 1000,
+    "cacheTimeout": 2000
+  },
+  
+  "production": {
+    "isDev": false,
+    "logLevel": "info",
+    "enableLogging": true,
+    "authPort": 8888,
+    "pollingInterval": 1000,
+    "cacheTimeout": 2000
+  },
+  
+  "features": {
+    "enableHardwareAcceleration": true,
+    "enableDebugMode": false,
+    "sendAnalytics": false,
+    "autoUpdates": true
+  },
+  
+  "ui": {
+    "theme": "auto",
+    "opacity": 0.95,
+    "scale": 1.0,
+    "position": "center",
+    "alwaysOnTop": true,
+    "showOnMinimize": true,
+    "hideOnRestore": true
+  },
+  
+  "system": {
+    "autoStart": false,
+    "startMinimized": true,
+    "closeToTray": true,
+    "showNotifications": true
+  }
+}
