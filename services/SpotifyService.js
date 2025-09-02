@@ -9,12 +9,12 @@ class SpotifyService {
     // TODO: Замените на ваши реальные значения из Spotify Developer Dashboard
     this.clientId = 'YOUR_SPOTIFY_CLIENT_ID_HERE';
     this.clientSecret = 'YOUR_SPOTIFY_CLIENT_SECRET_HERE';
-    // TODO: Замените на ваш реальный URL после деплоя на Vercel
-    this.redirectUri = 'https://ваш-проект.vercel.app/callback';
+    // GitHub Pages URL для callback
+    this.redirectUri = 'https://fixi2.github.io/spotiplayer/callback.html';
     this.alternativeUris = [
-      'https://ваш-проект.vercel.app/callback',   // Основной
-      'http://localhost:3000/callback',           // Локальная разработка
-      'http://localhost:8888/callback'            // Резервный
+      'https://fixi2.github.io/spotiplayer/callback.html',   // GitHub Pages
+      'http://localhost:3000/callback',                      // Локальная разработка
+      'http://localhost:8888/callback'                       // Резервный
     ];
     this.accessToken = null;
     this.refreshToken = null;
